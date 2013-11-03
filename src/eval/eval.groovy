@@ -91,6 +91,7 @@ trainTest {
         bind ItemScorer to UserMeanItemScorer
         bind (UserMeanBaseline, ItemScorer) to ItemMeanRatingItemScorer
     }
+	/*
 	//My stuff is here: 
 	for (nnbrs in [5, 10, 15, 20, 25, 30, 40, 50, 75, 100]) {
 		algorithm("UserUser") {
@@ -123,16 +124,18 @@ trainTest {
 			bind ItemScorer to UserUserItemScorer
 			set NeighborhoodSize to nnbrs
 			bind VectorSimilarity to CosineVectorSimilarity
-		}		
-		algoritm("Lucene") {
+		}
+				
+		algorithm("Lucene") {
 			attributes["NNbrs"] = nnbrs
 			include tagConfig
 			bind ItemScorer to ItemItemScorer
 			bind ItemItemModel to LuceneItemItemModel
 			set NeighborhoodSize to nnbrs
-			// consider using all 100 movies as neighbors
+			// 	consider using all 100 movies as neighbors
 			set ModelSize to 100
-		}
+		}		
+		
 		algorithm("LuceneNorm") {
 			attributes["NNbrs"] = nnbrs
 			include tagConfig
@@ -144,6 +147,7 @@ trainTest {
 			bind UserVectorNormalizer to BaselineSubtractingUserVectorNormalizer
 			within (UserVectorNormalizer) {
 				bind (BaselineScorer, ItemScorer) to ItemMeanRatingItemScorer
-		}	
-	}
+			}
+		}
+	}*/
 }
