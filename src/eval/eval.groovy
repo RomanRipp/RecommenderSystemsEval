@@ -92,6 +92,7 @@ trainTest {
         bind (UserMeanBaseline, ItemScorer) to ItemMeanRatingItemScorer
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 	//My stuff is here: 
 	for (nnbrs in [5, 10, 15, 20, 25, 30, 40, 50, 75, 100]) {
 		algorithm("UserUser") {
@@ -117,6 +118,8 @@ trainTest {
 			bind VectorSimilarity to PearsonCorrelation
 		}
 	}
+=======
+>>>>>>> 9b8253383903b1a7e5516bef1874959333dc83d2
 =======
 >>>>>>> 9b8253383903b1a7e5516bef1874959333dc83d2
 }

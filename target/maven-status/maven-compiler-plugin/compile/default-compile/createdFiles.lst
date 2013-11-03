@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 edu/umn/cs/recsys/dao/MOOCRatingDAO.class
 edu/umn/cs/recsys/dao/ItemTagDAO.class
 edu/umn/cs/recsys/TagEntropyMetric$TagEntropyAccumulator.class
@@ -21,6 +22,11 @@ edu/umn/cs/recsys/cbf/LuceneItemItemModel$LuceneCacheLoader.class
 edu/umn/cs/recsys/PopularityItemScorer$Builder.class
 edu/umn/cs/recsys/dao/TagFile.class
 edu/umn/cs/recsys/dao/RatingFile.class
+=======
+edu/umn/cs/recsys/cbf/LuceneItemItemModel$1.class
+edu/umn/cs/recsys/PopularityItemScorer$1.class
+edu/umn/cs/recsys/TagEntropyMetric$1.class
+>>>>>>> 9b8253383903b1a7e5516bef1874959333dc83d2
 =======
 edu/umn/cs/recsys/cbf/LuceneItemItemModel$1.class
 edu/umn/cs/recsys/PopularityItemScorer$1.class
