@@ -1,0 +1,16 @@
+/Users/romanripp/Documents/eclipse/RecommenderSystems/eval-assignment/src/main/java/edu/umn/cs/recsys/dao/CSVItemTagDAO.java
+/Users/romanripp/Documents/eclipse/RecommenderSystems/eval-assignment/src/main/java/edu/umn/cs/recsys/dao/TagFile.java
+/Users/romanripp/Documents/eclipse/RecommenderSystems/eval-assignment/src/main/java/edu/umn/cs/recsys/dao/UserFile.java
+/Users/romanripp/Documents/eclipse/RecommenderSystems/eval-assignment/src/main/java/edu/umn/cs/recsys/PopularityItemScorer.java
+/Users/romanripp/Documents/eclipse/RecommenderSystems/eval-assignment/src/main/java/edu/umn/cs/recsys/dao/MOOCItemDAO.java
+/Users/romanripp/Documents/eclipse/RecommenderSystems/eval-assignment/src/main/java/edu/umn/cs/recsys/dao/UserNameDAO.java
+/Users/romanripp/Documents/eclipse/RecommenderSystems/eval-assignment/src/main/java/edu/umn/cs/recsys/dao/ItemTagDAO.java
+/Users/romanripp/Documents/eclipse/RecommenderSystems/eval-assignment/src/main/java/edu/umn/cs/recsys/dao/TitleFile.java
+/Users/romanripp/Documents/eclipse/RecommenderSystems/eval-assignment/src/main/java/edu/umn/cs/recsys/dao/MOOCUserDAO.java
+/Users/romanripp/Documents/eclipse/RecommenderSystems/eval-assignment/src/main/java/edu/umn/cs/recsys/cbf/LuceneItemItemModel.java
+/Users/romanripp/Documents/eclipse/RecommenderSystems/eval-assignment/src/main/java/edu/umn/cs/recsys/dao/RatingFile.java
+/Users/romanripp/Documents/eclipse/RecommenderSystems/eval-assignment/src/main/java/edu/umn/cs/recsys/cbf/LuceneModelBuilder.java
+/Users/romanripp/Documents/eclipse/RecommenderSystems/eval-assignment/src/main/java/edu/umn/cs/recsys/dao/ItemTitleDAO.java
+/Users/romanripp/Documents/eclipse/RecommenderSystems/eval-assignment/src/main/java/edu/umn/cs/recsys/TagVocabulary.java
+/Users/romanripp/Documents/eclipse/RecommenderSystems/eval-assignment/src/main/java/edu/umn/cs/recsys/dao/MOOCRatingDAO.java
+/Users/romanripp/Documents/eclipse/RecommenderSystems/eval-assignment/src/main/java/edu/umn/cs/recsys/TagEntropyMetric.java
