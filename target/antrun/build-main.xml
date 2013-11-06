@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <project name="maven-antrun-" default="main"  >
 <target name="main">
-  <zip destfile="/Users/romanripp/Documents/eclipse/RecommenderSystems/eval-assignment/target/eval-assignment.zip">
+  <zip destfile="/home/grad02/roman/recSys/eval-assignment/target/eval-assignment.zip">
     <mappedresources>
-      <fileset dir="/Users/romanripp/Documents/eclipse/RecommenderSystems/eval-assignment">
+      <fileset dir="/home/grad02/roman/recSys/eval-assignment">
         <include name="pom.xml"/>
         <include name="src/**/*.java"/>
         <include name="src/**/*.groovy"/>

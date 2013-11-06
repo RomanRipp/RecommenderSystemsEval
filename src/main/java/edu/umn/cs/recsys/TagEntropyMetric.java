@@ -94,6 +94,7 @@ public class TagEntropyMetric extends AbstractTestUserMetric {
             double entropy = 0;
 
             // TODO Implement the entropy metric
+            
 
             totalEntropy += entropy;
             userCount += 1;
