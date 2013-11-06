@@ -22,8 +22,10 @@ import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * A metric that measures the tag entropy of the recommended items.
@@ -32,6 +34,7 @@ import java.util.Set;
 public class TagEntropyMetric extends AbstractTestUserMetric {
     private final int listSize;
     private final List<String> columns;
+    private final Map<Long, Set<String>> cache;
 
     /**
      * Construct a new tag entropy metric.
@@ -42,6 +45,7 @@ public class TagEntropyMetric extends AbstractTestUserMetric {
         listSize = nitems;
         // initialize column labels with list length
         columns = ImmutableList.of(String.format("TagEntropy@%d", nitems));
+        cache = new ConcurrentHashMap<Long, Set<String>>();
     }
 
     /**
@@ -102,19 +106,16 @@ public class TagEntropyMetric extends AbstractTestUserMetric {
 
             double entropy = 0.0;          
             // TODO Implement the entropy metric
-            
-
             for (String tag : vocab.getTagsList()){
             	double Pt = 0.0;
             	for (ScoredId recommendation : recommendations){
             		long item = recommendation.getId();
-            		List<String> movieTags = normalizeTags(tagDAO.getItemTags(item));
+            		Set<String> movieTags = getMovieTags(item, tagDAO);
             		if (movieTags.contains(tag.toLowerCase())){
             			Pt += 1.0 / movieTags.size();
-            			Pt /= recommendations.size();
             		}
             	}
-            	//Pt /= recommendations.size();
+            	Pt /= recommendations.size();
             	if (Pt != 0.0){ 
             		entropy -= Pt * Math.log(Pt);
             	}
@@ -127,17 +128,25 @@ public class TagEntropyMetric extends AbstractTestUserMetric {
             return new Object[]{entropy};
         } 
 
-        /**
+        private Set<String> getMovieTags(long item, ItemTagDAO tagDAO) {
+			if (cache.containsKey(item)) {
+				return cache.get(item);
+			} else {
+				Set<String> tagVect = normalizeTags(tagDAO.getItemTags(item));
+				cache.put(item, tagVect);
+				return tagVect;
+			}
+		}
+
+		/**
          * generate the list of movie tags that contains only unique lower case tags
          * @param L
          * @return
          */
-        private List<String> normalizeTags(List<String> L){
-        	List<String>  lowerCaseL = new ArrayList<String>();
+        private Set<String> normalizeTags(List<String> L){
+        	Set<String>  lowerCaseL = new HashSet<String>();
         	for(String s : L){
-        		if (!lowerCaseL.contains(s)){
         			lowerCaseL.add(s.toLowerCase());
-        		}        		
         	}
         	return lowerCaseL;
         }
