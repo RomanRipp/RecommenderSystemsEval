@@ -7,6 +7,8 @@ import org.grouplens.lenskit.core.Transient;
 import org.grouplens.lenskit.vectors.MutableSparseVector;
 
 import javax.inject.Inject;
+
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -38,7 +40,14 @@ public class TagVocabulary {
     public MutableSparseVector newTagVector() {
         return MutableSparseVector.create(tagMap.values());
     }
-
+    /** 
+     * return the set of tags
+     * @return
+     */
+    public Set<String> getTagsList() {
+    	return tagMap.keySet();
+    }
+    
     /**
      * Query whether the vocabulary has a tag.
      * @param tag The tag to query for.
