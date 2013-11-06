@@ -1,7 +1,11 @@
 package edu.umn.cs.recsys;
 
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Sets;
+
 import edu.umn.cs.recsys.dao.ItemTagDAO;
+import edu.umn.cs.recsys.dao.TagFile;
+
 import org.grouplens.lenskit.core.LenskitRecommender;
 import org.grouplens.lenskit.eval.algorithm.AlgorithmInstance;
 import org.grouplens.lenskit.eval.data.traintest.TTDataSet;
@@ -14,7 +18,12 @@ import org.grouplens.lenskit.vectors.MutableSparseVector;
 import org.grouplens.lenskit.vectors.VectorEntry;
 
 import javax.annotation.Nonnull;
+
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Random;
+import java.util.Set;
 
 /**
  * A metric that measures the tag entropy of the recommended items.
@@ -91,16 +100,48 @@ public class TagEntropyMetric extends AbstractTestUserMetric {
             ItemTagDAO tagDAO = lkrec.get(ItemTagDAO.class);
             TagVocabulary vocab = lkrec.get(TagVocabulary.class);
 
-            double entropy = 0;
-
+            double entropy = 0.0;          
             // TODO Implement the entropy metric
             
 
+            for (String tag : vocab.getTagsList()){
+            	double Pt = 0.0;
+            	for (ScoredId recommendation : recommendations){
+            		long item = recommendation.getId();
+            		List<String> movieTags = normalizeTags(tagDAO.getItemTags(item));
+            		if (movieTags.contains(tag.toLowerCase())){
+            			Pt += 1.0 / movieTags.size();
+            			Pt /= recommendations.size();
+            		}
+            	}
+            	//Pt /= recommendations.size();
+            	if (Pt != 0.0){ 
+            		entropy -= Pt * Math.log(Pt);
+            	}
+            	//System.out.println("Entropy: "+entropy+" P: "+Math.log(Pt));
+            }
+            entropy /= Math.log(2.0);
+            System.out.println("Entropy: "+entropy);
             totalEntropy += entropy;
             userCount += 1;
             return new Object[]{entropy};
-        }
+        } 
 
+        /**
+         * generate the list of movie tags that contains only unique lower case tags
+         * @param L
+         * @return
+         */
+        private List<String> normalizeTags(List<String> L){
+        	List<String>  lowerCaseL = new ArrayList<String>();
+        	for(String s : L){
+        		if (!lowerCaseL.contains(s)){
+        			lowerCaseL.add(s.toLowerCase());
+        		}        		
+        	}
+        	return lowerCaseL;
+        }
+        
         /**
          * Get the final aggregate results.  This is called after all users have been evaluated, and
          * returns the values for the columns in the global output.
