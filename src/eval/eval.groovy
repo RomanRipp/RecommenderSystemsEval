@@ -53,17 +53,17 @@ trainTest {
     output "${project.config.analysisDir}/eval-results.csv"
     userOutput "${project.config.analysisDir}/eval-user.csv"
 
-    //metric CoveragePredictMetric
-    //metric RMSEPredictMetric
-    //metric NDCGPredictMetric
+    metric CoveragePredictMetric
+    metric RMSEPredictMetric
+    metric NDCGPredictMetric
 
     // Compute nDCG trying to recommend lists of 10 from all items
     // This suffers from similar problems as the unary ratings case!
-    //metric topNnDCG {
-    //    candidates ItemSelectors.allItems()
-    //    exclude ItemSelectors.trainingItems()
-    //    listSize 10
-    //}
+    metric topNnDCG {
+        candidates ItemSelectors.allItems()
+        exclude ItemSelectors.trainingItems()
+        listSize 10
+    }
     // measure the entropy of the top 10 items
     metric new TagEntropyMetric(10)
 
@@ -74,7 +74,6 @@ trainTest {
         // recommendation is meaningless for this algorithm
         bind ItemRecommender to null
     }
-    
     algorithm("Popular") {
         include tagConfig
         // score items by their popularity
@@ -151,5 +150,4 @@ trainTest {
 			}
 		}
 	}
-	
 }

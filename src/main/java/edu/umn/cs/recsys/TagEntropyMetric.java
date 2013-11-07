@@ -115,16 +115,20 @@ public class TagEntropyMetric extends AbstractTestUserMetric {
             			Pt += 1.0 / movieTags.size();
             		}
             	}
-            	Pt /= recommendations.size();
-            	if (Pt != 0.0){ 
+            	int size = recommendations.size();
+            	if (Pt != 0.0 && size != 0){
+            		Pt /= size;
             		entropy -= Pt * Math.log(Pt);
             	}
-            	//System.out.println("Entropy: "+entropy+" P: "+Math.log(Pt));
             }
             entropy /= Math.log(2.0);
-            System.out.println("Entropy: "+entropy);
             totalEntropy += entropy;
             userCount += 1;
+            System.out.println("The average entropy: " + totalEntropy / userCount
+            		+" Total entropy: "+totalEntropy
+            		+" User counnt: "+userCount
+            		+" Entropy: "+entropy
+            		);
             return new Object[]{entropy};
         } 
 
@@ -161,6 +165,7 @@ public class TagEntropyMetric extends AbstractTestUserMetric {
         @Override
         public Object[] finalResults() {
             // return a single field, the average entropy
+        	System.out.println("The average entropy: " + totalEntropy / userCount);
             return new Object[]{totalEntropy / userCount};
         }
     }
