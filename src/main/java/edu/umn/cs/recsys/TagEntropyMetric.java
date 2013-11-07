@@ -118,6 +118,7 @@ public class TagEntropyMetric extends AbstractTestUserMetric {
             	int size = recommendations.size();
             	if (Pt != 0.0 && size != 0){
             		Pt /= size;
+            		
             		entropy -= Pt * Math.log(Pt);
             	}
             }
